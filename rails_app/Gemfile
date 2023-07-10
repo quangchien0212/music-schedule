@@ -66,3 +66,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem "bcrypt", "~> 3.1"
 
 gem "seed-fu", "~> 2.3"
+
+gem "graphql", "~> 2.0"
+gem "graphiql-rails", group: :development
