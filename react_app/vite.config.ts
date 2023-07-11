@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
+import sass from 'sass'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +10,12 @@ export default defineConfig({
     port: 3001
   },
   css: {
-    devSourcemap: true
+    devSourcemap: true,
+    preprocessorOptions: {
+      scss: {
+        implementation: sass,
+      },
+    },
   },
   resolve: {
     alias: {
