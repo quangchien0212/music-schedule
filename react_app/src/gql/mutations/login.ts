@@ -10,6 +10,11 @@ export const LOGIN = gql`
     login(input: $input) {
       errors
       token
+      user {
+        id
+        fullName
+        email
+      }
     }
   }
 `
