@@ -12,6 +12,7 @@ module RailsApp
     config.load_defaults 7.0
 
     config.autoload_paths << Rails.root.join('lib')
+    config.hosts << ENV["RAILS_DEVELOPMENT_HOSTS"]
 
     # Configuration for the application, engines, and railties goes here.
     #

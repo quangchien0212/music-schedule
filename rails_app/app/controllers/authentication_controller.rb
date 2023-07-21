@@ -3,7 +3,6 @@ class AuthenticationController < ApplicationController
   protect_from_forgery with: :null_session
  
   def authenticate
-    byebug
     command = AuthenticateUser.call(params[:email], params[:password])
  
     if command.success?
