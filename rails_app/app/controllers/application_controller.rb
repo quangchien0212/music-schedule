@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include ::UserSession
-  attr_reader :current_user
 
   private
 

@@ -1,48 +1,43 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import LoginForm from '~/components/LoginForm';
 import './Login.scss'
-import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '~/gql/mutations/login';
+import { useNavigate } from 'react-router-dom';
 
+const Login: React.FC = () => {
+  const navigate = useNavigate()
+  const [login] = useMutation(LOGIN)
 
-const App: React.FC = () => {
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+    login({
+      variables: {
+        input: {
+          email: values.email,
+          password: values.password,
+        }
+      },
+      onCompleted: (data) => {
+        const token = data.login.token
+        if (token) {
+          sessionStorage.setItem('token', token)
+          navigate('/')
+        }
+      }
+    })
   };
 
   return (
-    <Form
+    <LoginForm
       name="normal_login"
       className="login-form mx-auto p-5"
       onFinish={onFinish}
-    >
-      <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
-      >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: 'Please input your Password!' }]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button" block>
-          Log in
-        </Button>
-        <div className='mt-2'>
-          Or <Link to='/register'>register now!</Link>
-        </div>
-      </Form.Item>
-    </Form>
+      initialValues={{
+        email: 'quangchien0212@gmail.com',
+        password: '1'
+      }}
+    />
   );
 };
 
-export default App;
+export default Login;

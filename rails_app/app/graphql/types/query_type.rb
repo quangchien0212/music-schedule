@@ -12,6 +12,7 @@ module Types
     field :test_field, String, null: false,
       description: "An example field added by the generator"
     def test_field
+      ensure_user_session
       "Hello World!"
     end
   end
