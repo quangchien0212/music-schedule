@@ -1,41 +1,43 @@
 import React from 'react';
-import { Button, Form, FormProps, Input } from 'antd';
+import { Button } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { ProFormProps, LoginForm as MuiLoginForm, ProFormText } from '@ant-design/pro-components'
 
-type Props = Partial<FormProps>
+type Props = Partial<ProFormProps>
+
 const LoginForm: React.FC<Props> = (props) => {
 
   return (
-    <Form
-      {...props}
-    >
-      <Form.Item
-        name="email"
-        rules={[{ required: true, message: 'Please input your email!' }]}
-      >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: 'Please input your Password!' }]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button" block>
+    <MuiLoginForm
+      submitter={{
+        render: (props, _) => <Button
+          key="submit"
+          onClick={() => props.form?.submit?.()}
+          block
+          type='primary'
+        >
           Log in
         </Button>
-        <div className='mt-2'>
-          Or <Link to='/register'>register now!</Link>
-        </div>
-      </Form.Item>
-    </Form>
+      }}
+      {...props}
+    >
+      <ProFormText
+        name='email'
+        placeholder='Email'
+        rules={[{ required: true, message: 'Please input your email!' }]}
+        fieldProps={{
+          prefix: <UserOutlined className={'prefixIcon'} />,
+        }}
+      />
+      <ProFormText.Password
+        name='password'
+        rules={[{ required: true, message: 'Please input your Password!' }]}
+        placeholder='Password'
+        fieldProps={{
+          prefix: <LockOutlined className={'prefixIcon'} />,
+        }}
+      />
+    </MuiLoginForm>
   );
 };
 

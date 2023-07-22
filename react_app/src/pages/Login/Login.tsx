@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate()
   const [login] = useMutation(LOGIN)
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     login({
       variables: {
         input: {
