@@ -2,12 +2,18 @@ import { RouteObject } from "react-router-dom";
 import Login from './pages/Login/Login'
 import ErrorPage from './pages/ErrorPage'
 import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Dashboard from "./pages/DashBoard";
+import Courses from "./pages/Courses";
 
 export const routes: RouteObject[]  = [
   {
     path: "/",
-    element: <Home />,
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/courses",
+    element: <Courses />,
     errorElement: <ErrorPage />,
   },
   {

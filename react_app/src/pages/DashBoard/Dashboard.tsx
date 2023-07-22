@@ -1,5 +1,6 @@
 import React from 'react'
 import { gql, useQuery } from '@apollo/client'
+import Defaultlayout from '~/layouts/index'
 
 type Props = {}
 
@@ -12,7 +13,9 @@ const Home: React.FC<Props> = (props) => {
   const { data, loading } = useQuery(TEST_QUERY)
   console.log(data)
   return (
-    <div>Home</div>
+    <Defaultlayout>
+      <div>Dashboard</div>
+    </Defaultlayout>
   )
 }
 
