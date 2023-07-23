@@ -15,5 +15,11 @@ module Types
       ensure_user_session
       "Hello World!"
     end
+
+    field :courses, [Types::CourseType], null: false
+    def courses
+      ensure_user_session
+      Course.all
+    end
   end
 end

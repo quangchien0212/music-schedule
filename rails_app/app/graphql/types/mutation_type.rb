@@ -8,5 +8,6 @@ module Types
     end
 
     field :login, mutation: Mutations::Login
+    field :create_course, mutation: Mutations::CreateCourse
   end
 end
