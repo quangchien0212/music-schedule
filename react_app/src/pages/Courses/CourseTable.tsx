@@ -5,6 +5,7 @@ import { numberToCurrency } from '~/utils/number'
 import { stripedHtml } from '~/utils/string'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import EditCourseButton from '~/components/CreateCourseButton/EditCourseButton'
+import DeleteCourseButton from '~/components/DeleteCourseButton'
 
 type Props = {
   courses: Course[]
@@ -85,7 +86,7 @@ const CourseActions: React.FC<ActionsProps> = (props) => {
   return (
     <Button.Group>
       <EditCourseButton type='dashed' icon={<EditOutlined />} course={course} />
-      <Button type='dashed' icon={<DeleteOutlined />} danger />
+      <DeleteCourseButton type='dashed' icon={<DeleteOutlined />} danger course={course} />
     </Button.Group>
   )
 }

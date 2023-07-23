@@ -26,3 +26,15 @@ export const UPDATE_COURSE = gql`
     }
   }
 `
+
+export const DELETE_COURSE = gql`
+  mutation DeleteCourse($input: DeleteCourseInput!) {
+    deleteCourse(input: $input) {
+      course {
+        id
+      }
+      errors
+      success
+    }
+  }
+`
