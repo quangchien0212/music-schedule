@@ -1,6 +1,6 @@
 import React from 'react'
-import createClient from "./client";
-import { ApolloProvider } from '@apollo/client';
+import createClient from './client'
+import { ApolloProvider } from '@apollo/client'
 
 function withApollo<T = any>(Component: React.ElementType) {
   return (props: T) => (

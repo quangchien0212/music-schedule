@@ -1,23 +1,19 @@
-import React from 'react';
-import { Button } from 'antd';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import React from 'react'
+import { Button } from 'antd'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { ProFormProps, LoginForm as MuiLoginForm, ProFormText } from '@ant-design/pro-components'
 
 type Props = Partial<ProFormProps>
 
 const LoginForm: React.FC<Props> = (props) => {
-
   return (
     <MuiLoginForm
       submitter={{
-        render: (props, _) => <Button
-          key="submit"
-          onClick={() => props.form?.submit?.()}
-          block
-          type='primary'
-        >
-          Log in
-        </Button>
+        render: (props, _) => (
+          <Button key='submit' onClick={() => props.form?.submit?.()} block type='primary'>
+            Log in
+          </Button>
+        )
       }}
       {...props}
     >
@@ -26,7 +22,7 @@ const LoginForm: React.FC<Props> = (props) => {
         placeholder='Email'
         rules={[{ required: true, message: 'Please input your email!' }]}
         fieldProps={{
-          prefix: <UserOutlined className={'prefixIcon'} />,
+          prefix: <UserOutlined className={'prefixIcon'} />
         }}
       />
       <ProFormText.Password
@@ -34,11 +30,11 @@ const LoginForm: React.FC<Props> = (props) => {
         rules={[{ required: true, message: 'Please input your Password!' }]}
         placeholder='Password'
         fieldProps={{
-          prefix: <LockOutlined className={'prefixIcon'} />,
+          prefix: <LockOutlined className={'prefixIcon'} />
         }}
       />
     </MuiLoginForm>
-  );
-};
+  )
+}
 
 export default LoginForm

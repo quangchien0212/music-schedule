@@ -17,60 +17,51 @@ const columns = [
   {
     title: 'ID',
     dataIndex: 'id',
-    key: 'id',
+    key: 'id'
   },
   {
     title: 'Name',
     dataIndex: 'name',
-    key: 'name',
+    key: 'name'
   },
   {
     title: 'Description',
     dataIndex: 'description',
-    key: 'description',
+    key: 'description'
   },
   {
     title: 'Status',
     dataIndex: 'status',
-    key: 'status',
+    key: 'status'
   },
   {
     title: 'Price',
     dataIndex: 'price',
-    key: 'price',
+    key: 'price'
   },
   {
     title: 'Lessons',
     dataIndex: 'lessons',
-    key: 'lessons',
+    key: 'lessons'
   },
   {
     title: 'Actions',
     dataIndex: 'actions',
-    key: 'actions',
-  },
-];
+    key: 'actions'
+  }
+]
 
 const CourseTable: React.FC<Props> = (props) => {
   const { courses, ...rest } = props
   const dataSource = useMemo(() => {
-    return courses.map(course => ({
+    return courses.map((course) => ({
       id: course.id,
       name: <div className='whitespace-nowrap'>{course.name}</div>,
-      description: (
-        <div
-          className='line-clamp-2'
-        >
-          {stripedHtml(course.description)}
-        </div>
-      ),
+      description: <div className='line-clamp-2'>{stripedHtml(course.description)}</div>,
       price: course.price && numberToCurrency(course.price),
       level: course.level,
       status: (
-        <Tag
-          color={courseStatusColors[course.status]}
-          className='capitalize'
-        >
+        <Tag color={courseStatusColors[course.status]} className='capitalize'>
           {course.status}
         </Tag>
       ),
@@ -80,14 +71,7 @@ const CourseTable: React.FC<Props> = (props) => {
     }))
   }, [courses])
 
-  return (
-    <Table
-      bordered
-      {...rest}
-      columns={columns}
-      dataSource={dataSource}
-    />
-  )
+  return <Table bordered {...rest} columns={columns} dataSource={dataSource} />
 }
 
 export default CourseTable
@@ -101,16 +85,8 @@ const CourseActions: React.FC<ActionsProps> = (props) => {
 
   return (
     <Button.Group>
-      <EditCourseButton
-        type="dashed"
-        icon={<EditOutlined />}
-        course={course}
-      />
-      <Button
-        type="dashed"
-        icon={<DeleteOutlined />}
-        danger
-      />
+      <EditCourseButton type='dashed' icon={<EditOutlined />} course={course} />
+      <Button type='dashed' icon={<DeleteOutlined />} danger />
     </Button.Group>
   )
 }

@@ -7,16 +7,15 @@ const menuItems: MenuProps['items'] = [
   {
     icon: <DashboardOutlined />,
     key: 'dashboard',
-    label: 'Dashboard',
+    label: 'Dashboard'
   }
 ]
-
 
 type Props = {} & React.HTMLAttributes<HTMLDivElement>
 
 const Sidebar: React.FC<Props> = (props) => {
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer }
   } = theme.useToken()
 
   return (

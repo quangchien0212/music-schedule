@@ -10,37 +10,35 @@ type Props = {} & Partial<ButtonProps>
 
 const CreateCourseButton: React.FC<Props> = (props) => {
   const { children, ...rest } = props
-  const [createCourse, { loading}] =
-    useMutation<CreateCourseData, CreateCourseVars>(CREATE_COURSE, {
-      update: (cache, result) => {
-        if (result.data?.createCourse?.success) {
-          const course = result.data.createCourse.course
-          cache.modify({
-            fields: {
-              courses(refs = []) {
-                const newRef = cache.writeFragment({
-                  data: course,
-                  fragment: gql`
-                    fragment NewCourse on Course {
-                      id
-                    }
-                  `
-                })
-                return [...refs, newRef]
-              }
+  const [createCourse, { loading }] = useMutation<CreateCourseData, CreateCourseVars>(CREATE_COURSE, {
+    update: (cache, result) => {
+      if (result.data?.createCourse?.success) {
+        const course = result.data.createCourse.course
+        cache.modify({
+          fields: {
+            courses(refs = []) {
+              const newRef = cache.writeFragment({
+                data: course,
+                fragment: gql`
+                  fragment NewCourse on Course {
+                    id
+                  }
+                `
+              })
+              return [...refs, newRef]
             }
-          })
-
-        }
+          }
+        })
       }
-    })
+    }
+  })
 
   const onFormFinish = async (formData: CourseAttributes) => {
     createCourse({
       variables: {
         input: {
           attributes: {
-            ...formData,
+            ...formData
           }
         }
       }
@@ -56,10 +54,7 @@ const CreateCourseButton: React.FC<Props> = (props) => {
         destroyOnClose: true
       }}
       trigger={
-        <Button
-          type='primary'
-          {...rest}
-        >
+        <Button type='primary' {...rest}>
           {children ?? 'Create course'}
         </Button>
       }

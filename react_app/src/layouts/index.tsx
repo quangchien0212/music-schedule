@@ -9,13 +9,13 @@ const route = {
     {
       path: '/',
       name: 'DashBoard',
-      icon: <DashboardOutlined />,
+      icon: <DashboardOutlined />
     },
     {
       path: '/courses',
       name: 'Courses',
-      icon: <AppstoreOutlined />,
-    },
+      icon: <AppstoreOutlined />
+    }
   ]
 }
 
@@ -27,22 +27,16 @@ const Defaultlayout: React.FC<Props> = (props) => {
   const { children, ...rest } = props
   const location = useLocation()
 
-  const menuItemRender = useCallback((item: MenuDataItem , dom: React.ReactNode) => {
+  const menuItemRender = useCallback((item: MenuDataItem, dom: React.ReactNode) => {
     return (
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: 8,
+          gap: 8
         }}
       >
-        {item.path ?
-          <Link to={item.path}>
-            {dom}
-          </Link>
-          :
-          dom
-        }
+        {item.path ? <Link to={item.path}>{dom}</Link> : dom}
       </div>
     )
   }, [])

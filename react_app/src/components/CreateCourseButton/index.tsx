@@ -1,2 +1,2 @@
-import CreateCourseButton from './CreateCourseButton';
+import CreateCourseButton from './CreateCourseButton'
 export default CreateCourseButton

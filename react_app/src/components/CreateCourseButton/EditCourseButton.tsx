@@ -19,11 +19,10 @@ const EditCourseButton: React.FC<Props> = (props) => {
     status: course.status,
     level: course.level,
     price: course.price,
-    lessonsToComplete: course.lessonsToComplete,
+    lessonsToComplete: course.lessonsToComplete
   }
 
-  const [createCourse, { loading}] =
-    useMutation<UpdateCourseData, UpdateCourseVars>(UPDATE_COURSE)
+  const [createCourse, { loading }] = useMutation<UpdateCourseData, UpdateCourseVars>(UPDATE_COURSE)
 
   const onFormFinish = async (formData: CourseAttributes) => {
     await createCourse({
@@ -31,7 +30,7 @@ const EditCourseButton: React.FC<Props> = (props) => {
         input: {
           id: course.id,
           attributes: {
-            ...formData,
+            ...formData
           }
         }
       }
@@ -48,11 +47,7 @@ const EditCourseButton: React.FC<Props> = (props) => {
         title: 'Create new course',
         destroyOnClose: true
       }}
-      trigger={
-        <Button
-          {...rest}
-        />
-      }
+      trigger={<Button {...rest} />}
       loading={loading}
       onFinish={onFormFinish}
       initialValues={initData}

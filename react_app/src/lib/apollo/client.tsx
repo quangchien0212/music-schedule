@@ -1,39 +1,39 @@
-import { ApolloClient, ApolloLink, createHttpLink, from, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { HOST } from '~/constants/path';
+import { ApolloClient, ApolloLink, createHttpLink, from, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { HOST } from '~/constants/path'
 
 const detectLogout = new ApolloLink((operation, forward) => {
   return forward(operation).map((data) => {
-    data?.errors?.map(e => {
+    data?.errors?.map((e) => {
       if (e.message === 'login-required') {
         window.location.href = `${HOST}/login`
       }
     })
-    return data;
+    return data
   })
 })
 
 const httpLink = createHttpLink({
-  uri: "https://localhost:3000/graphql",
-});
+  uri: 'https://localhost:3000/graphql'
+})
 
 const authLink = setContext((_, { headers }) => {
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem('token')
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : ''
     }
   }
-});
+})
 
 const links = from([authLink, detectLogout, httpLink])
 
 function createClient() {
   const client = new ApolloClient({
     link: links,
-    cache: new InMemoryCache(),
-  });
+    cache: new InMemoryCache()
+  })
 
   return client
 }

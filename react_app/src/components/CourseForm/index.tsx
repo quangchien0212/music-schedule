@@ -1,2 +1,2 @@
-import CourseForm from "./CourseForm"
+import CourseForm from './CourseForm'
 export default CourseForm

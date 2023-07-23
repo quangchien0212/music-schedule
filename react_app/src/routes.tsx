@@ -1,29 +1,29 @@
-import { RouteObject } from "react-router-dom";
+import { RouteObject } from 'react-router-dom'
 import Login from './pages/Login/Login'
 import ErrorPage from './pages/ErrorPage'
-import Register from "./pages/Register";
-import Dashboard from "./pages/DashBoard";
-import Courses from "./pages/Courses";
+import Register from './pages/Register'
+import Dashboard from './pages/DashBoard'
+import Courses from './pages/Courses'
 
-export const routes: RouteObject[]  = [
+export const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Dashboard />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
-    path: "/courses",
+    path: '/courses',
     element: <Courses />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
-    errorElement: <ErrorPage />,
-  },
+    errorElement: <ErrorPage />
+  }
 ]

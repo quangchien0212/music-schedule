@@ -1,9 +1,9 @@
-import React from 'react';
-import LoginForm from '~/components/LoginForm';
+import React from 'react'
+import LoginForm from '~/components/LoginForm'
 import './Login.scss'
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '~/gql/mutations/login';
-import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@apollo/client'
+import { LOGIN } from '~/gql/mutations/login'
+import { useNavigate } from 'react-router-dom'
 
 const Login: React.FC = () => {
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const Login: React.FC = () => {
       variables: {
         input: {
           email: values.email,
-          password: values.password,
+          password: values.password
         }
       },
       onCompleted: (data) => {
@@ -25,19 +25,19 @@ const Login: React.FC = () => {
         }
       }
     })
-  };
+  }
 
   return (
     <LoginForm
-      name="normal_login"
-      className="login-form mx-auto p-5"
+      name='normal_login'
+      className='login-form mx-auto p-5'
       onFinish={onFinish}
       initialValues={{
         email: 'quangchien0212@gmail.com',
         password: '1'
       }}
     />
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
