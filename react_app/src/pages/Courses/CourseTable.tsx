@@ -1,11 +1,10 @@
-import { Button, Table, TableProps, Tag } from 'antd'
+import { Button, Table, Tag } from 'antd'
 import React, { useMemo } from 'react'
 import { courseStatusColors } from '~/constants/course'
 import { numberToCurrency } from '~/utils/number'
 import { stripedHtml } from '~/utils/string'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import EditCourseButton from '~/components/CreateCourseButton/EditCourseButton'
-import course from '~/gql/fragments/course'
 
 type Props = {
   courses: Course[]

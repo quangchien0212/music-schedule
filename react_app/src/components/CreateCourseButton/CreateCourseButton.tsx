@@ -34,7 +34,7 @@ const CreateCourseButton: React.FC<Props> = (props) => {
   })
 
   const onFormFinish = async (formData: CourseAttributes) => {
-    createCourse({
+    await createCourse({
       variables: {
         input: {
           attributes: {
@@ -43,6 +43,8 @@ const CreateCourseButton: React.FC<Props> = (props) => {
         }
       }
     })
+
+    return true
   }
 
   return (

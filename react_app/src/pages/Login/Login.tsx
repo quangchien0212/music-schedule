@@ -9,8 +9,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate()
   const [login] = useMutation(LOGIN)
 
-  const onFinish = async (values: any) => {
-    login({
+  const onFinish = async (values: Record<string, any>) => {
+    await login({
       variables: {
         input: {
           email: values.email,
@@ -18,13 +18,15 @@ const Login: React.FC = () => {
         }
       },
       onCompleted: (data) => {
-        const token = data.login.token
+        const token = data.login?.token
         if (token) {
           sessionStorage.setItem('token', token)
           navigate('/')
         }
       }
     })
+
+    return true
   }
 
   return (

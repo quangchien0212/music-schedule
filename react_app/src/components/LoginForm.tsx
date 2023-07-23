@@ -9,7 +9,7 @@ const LoginForm: React.FC<Props> = (props) => {
   return (
     <MuiLoginForm
       submitter={{
-        render: (props, _) => (
+        render: (props) => (
           <Button key='submit' onClick={() => props.form?.submit?.()} block type='primary'>
             Log in
           </Button>

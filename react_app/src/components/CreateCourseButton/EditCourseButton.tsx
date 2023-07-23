@@ -3,7 +3,7 @@ import { ButtonProps } from 'antd/lib/button'
 import React from 'react'
 import CourseForm from '../CourseForm'
 import { ModalForm, ModalFormProps } from '@ant-design/pro-components'
-import { gql, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { UPDATE_COURSE } from '~/gql/mutations/course'
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 } & Partial<ButtonProps>
 
 const EditCourseButton: React.FC<Props> = (props) => {
-  const { children, course, ...rest } = props
+  const { course, ...rest } = props
 
   const initData = {
     name: course.name,

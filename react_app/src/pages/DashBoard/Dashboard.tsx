@@ -1,17 +1,7 @@
 import React from 'react'
-import { gql, useQuery } from '@apollo/client'
 import Defaultlayout from '~/layouts/index'
 
-type Props = {}
-
-const TEST_QUERY = gql`
-  query TestField {
-    testField
-  }
-`
-const Home: React.FC<Props> = (props) => {
-  const { data, loading } = useQuery(TEST_QUERY)
-  console.log(data)
+const Dashboard: React.FC = () => {
   return (
     <Defaultlayout>
       <div>Dashboard</div>
@@ -19,4 +9,4 @@ const Home: React.FC<Props> = (props) => {
   )
 }
 
-export default Home
+export default Dashboard

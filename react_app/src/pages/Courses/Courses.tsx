@@ -5,11 +5,9 @@ import Defaultlayout from '~/layouts/index'
 import CourseTable from './CourseTable'
 import CreateCourseButton from '~/components/CreateCourseButton'
 
-type Props = {}
-
-const Courses: React.FC<Props> = (props) => {
+const Courses: React.FC = () => {
   const { data, loading } = useQuery(GET_COURSES)
-  const courses = data?.courses ?? []
+  const courses: Course[] = data?.courses ?? []
 
   return (
     <Defaultlayout>
