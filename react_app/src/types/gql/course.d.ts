@@ -7,3 +7,11 @@ type CreateCourseData = {
     course: Course
   } & MutationBaseData
 }
+
+type UpdateCourseVars = ModifyRecordVars<CourseAttributes>
+
+type UpdateCourseData = {
+  updateCourse: {
+    course: Course
+  } & MutationBaseData
+}

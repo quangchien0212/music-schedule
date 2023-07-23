@@ -1,8 +1,11 @@
-import { Table, TableProps, Tag } from 'antd'
+import { Button, Table, TableProps, Tag } from 'antd'
 import React, { useMemo } from 'react'
 import { courseStatusColors } from '~/constants/course'
 import { numberToCurrency } from '~/utils/number'
 import { stripedHtml } from '~/utils/string'
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
+import EditCourseButton from '~/components/CreateCourseButton/EditCourseButton'
+import course from '~/gql/fragments/course'
 
 type Props = {
   courses: Course[]
@@ -41,6 +44,11 @@ const columns = [
     dataIndex: 'lessons',
     key: 'lessons',
   },
+  {
+    title: 'Actions',
+    dataIndex: 'actions',
+    key: 'actions',
+  },
 ];
 
 const CourseTable: React.FC<Props> = (props) => {
@@ -68,6 +76,7 @@ const CourseTable: React.FC<Props> = (props) => {
       ),
       key: course.id,
       lessons: course.lessonsToComplete,
+      actions: <CourseActions course={course} />
     }))
   }, [courses])
 
@@ -82,3 +91,26 @@ const CourseTable: React.FC<Props> = (props) => {
 }
 
 export default CourseTable
+
+type ActionsProps = {
+  course: Course
+}
+
+const CourseActions: React.FC<ActionsProps> = (props) => {
+  const { course } = props
+
+  return (
+    <Button.Group>
+      <EditCourseButton
+        type="dashed"
+        icon={<EditOutlined />}
+        course={course}
+      />
+      <Button
+        type="dashed"
+        icon={<DeleteOutlined />}
+        danger
+      />
+    </Button.Group>
+  )
+}
