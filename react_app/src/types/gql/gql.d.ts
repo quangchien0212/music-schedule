@@ -6,12 +6,12 @@ interface CreateRecordVars<Attributes> {
 
 interface ModifyRecordVars<Attributes> {
   input: {
-    id: String
+    id: string
     attributes: Attributes
   }
 }
 
 interface MutationBaseData {
   success: boolean
-  errors: [String]
+  errors: [string]
 }
