@@ -52,7 +52,8 @@ const CreateCourseButton: React.FC<Props> = (props) => {
       component={ModalForm}
       modalProps={{
         width: 500,
-        title: 'Create new course'
+        title: 'Create new course',
+        destroyOnClose: true
       }}
       trigger={
         <Button
