@@ -1,7 +1,7 @@
 import { Button } from 'antd'
 import { ButtonProps } from 'antd/lib/button'
 import React from 'react'
-import CourseForm from '../CourseForm'
+import CourseForm from './CourseForm'
 import { ModalForm, ModalFormProps } from '@ant-design/pro-components'
 import { useMutation } from '@apollo/client'
 import { UPDATE_COURSE } from '~/gql/mutations/course'

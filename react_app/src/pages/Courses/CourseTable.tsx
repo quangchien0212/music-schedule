@@ -4,7 +4,7 @@ import { courseStatusColors } from '~/constants/course'
 import { numberToCurrency } from '~/utils/number'
 import { stripedHtml } from '~/utils/string'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import EditCourseButton from '~/components/CreateCourseButton/EditCourseButton'
+import EditCourseButton from '~/components/EditCourseButton'
 import DeleteCourseButton from '~/components/DeleteCourseButton'
 
 type Props = {
