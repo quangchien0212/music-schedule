@@ -43,4 +43,8 @@ class RailsAppSchema < GraphQL::Schema
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     GlobalID.find(global_id)
   end
+
+  def authorize(record, method)
+    context[:pundit].author record, method
+  end
 end

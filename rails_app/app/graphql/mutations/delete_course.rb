@@ -6,6 +6,7 @@ module Mutations
 
     def resolve(id:)
       course = Course.find(id)
+      authorize course, :delete?
 
       if course.deletable? && course.destroy
         return {

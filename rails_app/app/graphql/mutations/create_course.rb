@@ -6,6 +6,7 @@ module Mutations
 
     def resolve(attributes:)
       course = Course.create(attributes.to_h)
+      authorize course, :create?
 
       if course.valid?
         return {

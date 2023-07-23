@@ -8,6 +8,8 @@ module Mutations
     def resolve(id:, attributes:)
       course = Course.find(id)
 
+      authorize course, :update?
+
       if course.update(attributes.to_h)
         return {
           course: course,

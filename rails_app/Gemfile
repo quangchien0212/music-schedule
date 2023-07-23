@@ -62,7 +62,11 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'dotenv-rails', groups: [:development, :test]
+group :test, :development do
+  gem 'dotenv-rails'
+  gem "rspec-rails"
+  gem "byebug", "~> 11.1"
+end
 gem "bcrypt", "~> 3.1"
 
 gem "seed-fu", "~> 2.3"
@@ -76,4 +80,4 @@ gem "jwt", "~> 2.7"
 
 gem "simple_command", "~> 1.0"
 
-gem "byebug", "~> 11.1"
+gem "pundit", "~> 2.3"

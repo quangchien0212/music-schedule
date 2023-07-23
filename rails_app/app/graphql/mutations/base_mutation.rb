@@ -8,5 +8,9 @@ module Mutations
 
     field :success, Boolean, null: false, description: 'Flag indicating if the mutation was performed'
     field :errors, [String], null: false, description: 'List of errors (if any) that occurred during the mutation'
+
+    def authorize(record, method)
+      context[:pundit].pundit_authorize record, method
+    end
   end
 end

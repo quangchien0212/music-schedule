@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
   include ::UserSession
+
+  def pundit_authorize(record, action)
+    authorize record, action
+  end
 
   private
 
