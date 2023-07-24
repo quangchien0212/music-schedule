@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { MenuDataItem, PageContainer, PageHeader, ProLayout, ProLayoutProps } from '@ant-design/pro-components'
-import { DashboardOutlined, AppstoreOutlined } from '@ant-design/icons'
+import { DashboardOutlined, AppstoreOutlined, TeamOutlined } from '@ant-design/icons'
 import { Link, useLocation } from 'react-router-dom'
 
 const route = {
@@ -15,6 +15,11 @@ const route = {
       path: '/courses',
       name: 'Courses',
       icon: <AppstoreOutlined />
+    },
+    {
+      path: '/teachers',
+      name: 'Teachers',
+      icon: <TeamOutlined />
     }
   ]
 }
