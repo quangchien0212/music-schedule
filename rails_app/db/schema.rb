@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_083125) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_024954) do
   create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", size: :long
@@ -63,6 +63,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_083125) do
     t.boolean "locked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "grade"
+    t.string "phone"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "role_permissions", "permissions"
