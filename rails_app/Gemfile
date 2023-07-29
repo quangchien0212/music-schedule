@@ -81,3 +81,4 @@ gem "jwt", "~> 2.7"
 gem "simple_command", "~> 1.0"
 
 gem "pundit", "~> 2.3"
+gem "kaminari"
