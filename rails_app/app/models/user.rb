@@ -3,7 +3,11 @@ class User < ApplicationRecord
 
   has_one :user_role
   has_one :role, through: :user_role
-  scope :with_teacher_role, -> { joins(:role).where(role: { name: 'teacher' } ) }
+  scope :can_be_teacher, -> { joins(:role).where(role: { name: 'guest' } ) }
+  scope :with_name, -> (keyword) {
+    tokenized = "%#{Tokenizer.get_ascii(keyword.downcase)}%"
+    where('full_name LIKE ?', tokenized)
+  }
 
   has_secure_password
 

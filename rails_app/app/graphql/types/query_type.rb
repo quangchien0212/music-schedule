@@ -16,5 +16,15 @@ module Types
 
       teachers
     end
+
+    field :users_can_be_teacher, Types::UserType.kaminari_pagination_type, null: false, extensions: [Paginations::KaminariExtension] do
+      argument :keyword, String, required: false
+    end
+    def users_can_be_teacher(keyword: nil)
+      rel = User.can_be_teacher
+      rel = rel.with_name(keyword) if keyword.present?
+
+      rel
+    end
   end
 end

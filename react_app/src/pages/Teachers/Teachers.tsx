@@ -3,6 +3,7 @@ import React from 'react'
 import { GET_TEACHERS } from '~/gql/queries/teacher'
 import Defaultlayout from '~/layouts/index'
 import TeacherTable from './TeacherTable'
+import CreateTeacherButton from '~/components/CreateCourseButton/CreateTeacherButton'
 
 const Teachers: React.FC = () => {
   const { data, loading } = useQuery(GET_TEACHERS)
@@ -10,6 +11,7 @@ const Teachers: React.FC = () => {
 
   return (
     <Defaultlayout>
+      <CreateTeacherButton />
       <TeacherTable
         teachers={teachers}
         className="mt-4"

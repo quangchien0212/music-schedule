@@ -40,6 +40,7 @@ const TeacherTable: React.FC<Props> = (props) => {
   const { teachers, ...rest } = props
   const dataSource = useMemo(() => {
     return teachers.map((teacher) => ({
+      key: teacher.id,
       fullName: teacher.fullName,
       email: teacher.email,
       grade: (
