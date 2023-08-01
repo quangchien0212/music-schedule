@@ -1,65 +1,21 @@
-import React, { useCallback } from 'react'
-import { MenuDataItem, PageContainer, PageHeader, ProLayout, ProLayoutProps } from '@ant-design/pro-components'
-import { DashboardOutlined, AppstoreOutlined, TeamOutlined } from '@ant-design/icons'
-import { Link, useLocation } from 'react-router-dom'
-
-const route = {
-  path: '/',
-  routes: [
-    {
-      path: '/',
-      name: 'DashBoard',
-      icon: <DashboardOutlined />
-    },
-    {
-      path: '/courses',
-      name: 'Courses',
-      icon: <AppstoreOutlined />
-    },
-    {
-      path: '/teachers',
-      name: 'Teachers',
-      icon: <TeamOutlined />
-    }
-  ]
-}
+import React from 'react'
+import { Box } from '@mui/material'
+import SideNavigation from '~/components/SignInForm/SideNavigation'
 
 type Props = {
   children: React.ReactNode
-} & ProLayoutProps
+} & React.HTMLAttributes<HTMLDivElement>
 
 const Defaultlayout: React.FC<Props> = (props) => {
   const { children, ...rest } = props
-  const location = useLocation()
-
-  const menuItemRender = useCallback((item: MenuDataItem, dom: React.ReactNode) => {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8
-        }}
-      >
-        {item.path ? <Link to={item.path}>{dom}</Link> : dom}
-      </div>
-    )
-  }, [])
 
   return (
-    <ProLayout
-      route={route}
-      title='Music schedule'
-      location={{ pathname: location.pathname }}
-      pure={false}
-      menuItemRender={menuItemRender}
-      {...rest}
-    >
-      <PageContainer>
-        <PageHeader />
+    <Box sx={{ display: 'flex' }}>
+      <SideNavigation />
+      <Box component='main' sx={{ flexGrow: 1, p: 3 }} {...rest}>
         {children}
-      </PageContainer>
-    </ProLayout>
+      </Box>
+    </Box>
   )
 }
 
