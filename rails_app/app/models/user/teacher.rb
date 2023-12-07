@@ -1,4 +1,4 @@
-class Teacher < User
+class User::Teacher < User
   self.table_name = 'users'
   GRADES = %w(
     grade_1
@@ -10,11 +10,11 @@ class Teacher < User
 
   default_scope { joins(:role).where(role: { name: 'teacher' } ) }
   validates :grade, inclusion: { in: GRADES }
-  before_create :add_teacher_role
+  before_create :add_role
 
   private
 
-  def add_teacher_role
+  def add_role
     self.role = Role.find_by_name('teacher')
   end
 end
