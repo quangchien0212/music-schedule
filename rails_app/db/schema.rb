@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_024954) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_11_084527) do
   create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", size: :long
@@ -20,6 +20,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_024954) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.integer "size", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
   create_table "permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,6 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_024954) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "lessons", "courses"
+  add_foreign_key "lessons", "users", column: "teacher_id"
   add_foreign_key "role_permissions", "permissions"
   add_foreign_key "role_permissions", "roles"
   add_foreign_key "user_roles", "roles"
