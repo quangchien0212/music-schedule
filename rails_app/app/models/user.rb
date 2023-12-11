@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def teacher?
     role.name == 'teacher'
   end
+
+  def leaner?
+    role.name == 'leaner'
+  end
 end
