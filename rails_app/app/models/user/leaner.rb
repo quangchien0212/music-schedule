@@ -1,6 +1,9 @@
 class User::Leaner < User
   self.table_name = 'users'
 
+  has_many :leaner_lessons
+  has_many :lessons, through: :leaner_lessons
+
   default_scope { joins(:role).where(role: { name: 'leaner' } ) }
   before_create :add_role
 
