@@ -22,13 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_091733) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "leaner_lessons", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "leaner_id", null: false
+  create_table "learner_lessons", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "learner_id", null: false
     t.bigint "lesson_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["leaner_id"], name: "index_leaner_lessons_on_leaner_id"
-    t.index ["lesson_id"], name: "index_leaner_lessons_on_lesson_id"
+    t.index ["learner_id"], name: "index_learner_lessons_on_learner_id"
+    t.index ["lesson_id"], name: "index_learner_lessons_on_lesson_id"
   end
 
   create_table "lessons", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -89,8 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_091733) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "leaner_lessons", "lessons"
-  add_foreign_key "leaner_lessons", "users", column: "leaner_id"
+  add_foreign_key "learner_lessons", "lessons"
+  add_foreign_key "learner_lessons", "users", column: "learner_id"
   add_foreign_key "lessons", "courses"
   add_foreign_key "lessons", "users", column: "teacher_id"
   add_foreign_key "role_permissions", "permissions"

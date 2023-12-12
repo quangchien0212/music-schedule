@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Lesson, type: :model do
   before(:each) do
     Role.create!(name: 'teacher')
-    Role.create!(name: 'leaner')
+    Role.create!(name: 'learner')
 
     User::Teacher.create!(
       full_name: 'Foo bar',
@@ -20,9 +20,9 @@ RSpec.describe Lesson, type: :model do
       price: 0,
     )
 
-    User::Leaner.create!(
-      full_name: 'Leaner foo bar',
-      email: 'foo.bar@leaner.com',
+    User::Learner.create!(
+      full_name: 'Learner foo bar',
+      email: 'foo.bar@learner.com',
       password: '1',
     )
   end
@@ -32,7 +32,7 @@ RSpec.describe Lesson, type: :model do
     it 'should create a lesson' do
       teacher = User::Teacher.first
       course = Course.first
-      leaner = User::Leaner.first
+      learner = User::Learner.first
       expect(teacher.present?).to eq true
       expect(course.present?).to eq true
 
@@ -50,12 +50,12 @@ RSpec.describe Lesson, type: :model do
     end
   end
 
-  it 'should add leaner to lesson' do
+  it 'should add learner to lesson' do
     teacher = User::Teacher.first
     course = Course.first
-    leaner = User::Leaner.first
+    learner = User::Learner.first
     expect(teacher.present?).to eq true
-    expect(leaner.present?).to eq true
+    expect(learner.present?).to eq true
     expect(course.present?).to eq true
     now = DateTime.now
 
@@ -65,12 +65,12 @@ RSpec.describe Lesson, type: :model do
       start_at: now,
       end_at: now + 3.hours,
     )
-    lesson.leaners.push(leaner)
+    lesson.learners.push(learner)
     lesson.save!
 
     expect(lesson.valid?).to eq(true)
-    expect(lesson.leaners.length).to eq(1)
-    expect(lesson.leaners.first.id).to eq(leaner.id)
-    expect(leaner.lessons.first.id).to eq(lesson.id)
+    expect(lesson.learners.length).to eq(1)
+    expect(lesson.learners.first.id).to eq(learner.id)
+    expect(learner.lessons.first.id).to eq(lesson.id)
   end
 end

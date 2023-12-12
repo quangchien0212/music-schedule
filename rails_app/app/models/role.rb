@@ -2,7 +2,7 @@ class Role < ApplicationRecord
   NAMES = %w(
     guest
     teacher
-    leaner
+    learner
     admin
   )
 

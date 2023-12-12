@@ -25,7 +25,7 @@ class User < ApplicationRecord
     role.name == 'teacher'
   end
 
-  def leaner?
-    role.name == 'leaner'
+  def learner?
+    role.name == 'learner'
   end
 end

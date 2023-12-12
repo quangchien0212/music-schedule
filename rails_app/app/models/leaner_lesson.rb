@@ -1,4 +1,4 @@
-class LeanerLesson < ApplicationRecord
-  belongs_to :leaner, class_name: "User::Leaner", foreign_key: :leaner_id
+class LearnerLesson < ApplicationRecord
+  belongs_to :learner, class_name: "User::Learner", foreign_key: :learner_id
   belongs_to :lesson
 end
