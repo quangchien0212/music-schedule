@@ -11,6 +11,12 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  class << self
+    def create_user_by_role(email:, full_name:, password:, role:)
+      create(email: email, full_name: full_name, password: password, role: Role.find_by_name(role))
+    end
+  end
+
   def admin?
     role.name == 'admin'
   end
